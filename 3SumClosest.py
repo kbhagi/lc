@@ -2,61 +2,35 @@ from typing import List
 
 class Solution:
 
-    def threeSumClosest(self, nums: List[int], target: int) -> int:
-        diff = float(inf)
-        nums.sort()
-        for index, element in enumerate(nums):
-            lo, hi = index + 1,  len(nums)-1
-            print(lo, hi)
-            while(lo < hi): # 5 < 2
-                sum = element + nums[lo] + nums[hi]
-                if abs(target - sum) < abs(diff):
-                   diff = target - sum
-                if sum < target:
-                    lo+=1 
-                else:
-                    hi-=1
-            if diff == 0:
-                    break
-        return target - diff
-
-
-This code aims to find the sum of three integers within a given list (nums) that is closest to a specified target value (target).
-Steps:
-
-Initialization:
-
-Sets diff to infinity to track the smallest difference found so far.
-Sorts the list nums in ascending order to enable efficient searching using two pointers.
-Outer Loop:
-
-Iterates through each element in nums using enumerate to get both the index and value.
-Two Pointers:
-
-Initializes lo and hi pointers to the next two elements after the current element.
-Employs a while loop that continues as long as lo is less than hi.
-Sum Calculation:
-
-Calculates the current sum using the current element and the elements at lo and hi indices.
-Difference Check:
-
-Determines if the absolute difference between the current sum and the target is smaller than the smallest difference found so far (diff).
-If yes, updates diff with the new, smaller difference.
-Pointer Movement:
-
-If the current sum is less than the target, increments lo to explore a potentially larger sum.
-If the current sum is greater than the target, decrements hi to explore a potentially smaller sum.
-Early Termination:
-
-If diff becomes 0 (indicating an exact match), breaks out of the loops as the closest sum has been found.
-Return Result:
-
-Returns the target value minus the final diff, which represents the closest sum to the target.
-Key Points:
-
-The code leverages sorting and two-pointer techniques to efficiently explore potential triplets.
-It tracks the smallest difference found so far to gradually converge towards the closest sum.
-It handles edge cases like exact matches and empty or small lists.
+        def threeSumClosest(self, nums: List[int], target: int) -> int:
+            """
+            Finds the three integers in 'nums' that sum closest to 'target'.
+            """
+            # Initialize a variable to track the smallest difference found so far:
+            diff = float('inf')  # Start with an infinitely large difference
+            # Sort the list to enable efficient two-pointer search:
+            nums.sort()
+            # Iterate through each element as the potential first number in a triplet:
+            for index, element in enumerate(nums):
+                # Initialize two pointers to explore the remaining subarray:
+                lo, hi = index + 1, len(nums) - 1
+                # Two-pointer approach to find potential triplets:
+                while lo < hi:
+                    # Calculate the current sum using the three pointers:
+                    sum = element + nums[lo] + nums[hi]
+                    # Check if the current sum is closer to the target than any previous sum:
+                    if abs(target - sum) < abs(diff):
+                        diff = target - sum  # Update the smallest difference
+                    # Move pointers towards a closer sum:
+                    if sum < target:
+                        lo += 1  # Increase the sum by moving the left pointer
+                    else:
+                        hi -= 1  # Decrease the sum by moving the right pointer
+                    # Terminate early if an exact match is found:
+                    if diff == 0:
+                        break        
+            # Return the target value minus the smallest difference, which is the closest sum:
+            return target - diff
 
   
 def threeSumClosest(self, nums: List[int], target: int) -> int:
