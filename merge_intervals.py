@@ -2,9 +2,8 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()
         merged = []
-        for i in range(len(intervals)):
-      
-            if merged == []:
+        for i in range(len(intervals)):  #Time Complexity O(n) + O(n log(n)) = O(n)
+            if merged == []:             #Space Complexity O(n)
                 merged.append(intervals[i])
             else:
                 previous_end = merged[-1][1]
