@@ -1,7 +1,7 @@
 from typing import List
 
 # two-pointer approach
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
+def twoSum2(self, numbers: List[int], target: int) -> List[int]:
     # [2,7,11,15], target=9
     # [2,3,4], target = 6
     # [-1,0], target = -1
@@ -15,7 +15,7 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
             right -= 1
 
 # hash-table
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
+def twoSum2(self, numbers: List[int], target: int) -> List[int]:
     map = {}
     for i in range(len(numbers)):
         complement = target - numbers[i]
@@ -26,7 +26,7 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 
 
 # binary search
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
+def twoSum2(self, numbers: List[int], target: int) -> List[int]:
     for i in range(len(numbers)):
         left, right = i + 1, len(numbers) - 1
         complement = target - numbers[i]
