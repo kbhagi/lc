@@ -1,3 +1,10 @@
+The problem presents a scenario where we have an array of meeting time intervals, each represented by a pair of numbers [start_i, end_i]. These pairs indicate when a meeting starts and ends. The goal is to find the minimum number of conference rooms required to accommodate all these meetings without any overlap. In other words, we want to allocate space such that no two meetings occur in the same room simultaneously.
+
+    
+#intervals = [[0,30],[5,10],[15,20]], output =2
+# intervals = [[7,10],[2,4]], output = 1
+
+    
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         starts = [] # Create 2 arrays starts and ends to store the each start and end intervals separately.
@@ -27,8 +34,6 @@ https://i.loli.net/2018/09/24/5ba81e5ea9d15.jpg
 https://i.loli.net/2018/09/24/5ba81e7c04aee.jpg
 From this simulation, we can see if starts[i] < ends[endItr], we cannot use a room we used before, otherwise we can reuse a room.
 
-#intervals = [[0,30],[5,10],[15,20]], output =2
-# intervals = [[7,10],[2,4]], output = 1
 
     def minMeetingRooms(self, intervals: List[Interval]) -> int:
         start = sorted([i.start for i in intervals])
