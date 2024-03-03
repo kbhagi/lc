@@ -20,7 +20,7 @@ class Solution:
             if starts[i] < ends[ends_idx]:
                 rooms+=1
             else: #  if starts[i] < ends[ends_idx], we cannot use a room we used before, otherwise we can reuse a room.
-                ends_idx+=1
+                ends_idx+=1 # which means that there is no room can be freed, then we need allocate a new room for meeting 
         return rooms
 
 
