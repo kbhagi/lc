@@ -29,10 +29,11 @@ Meetings that started which haven’t ended yet have to be put into different me
 Next, because endsItr moves to the next end event, we’ll find that the start event pointed by i happens before the end event pointed by endsItr. Thus, now we have 4 meetings started but only one ended, so we need one more room. And it goes on as this.
 """
 
+"""
 https://i.loli.net/2018/09/24/5ba81e5ea9d15.jpg
 https://i.loli.net/2018/09/24/5ba81e7c04aee.jpg
 From this simulation, we can see if starts[i] < ends[endItr], we cannot use a room we used before, otherwise we can reuse a room.
-
+"""
 
     def minMeetingRooms(self, intervals):
         # Sort the given meetings by their start time
