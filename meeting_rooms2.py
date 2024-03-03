@@ -6,19 +6,21 @@
    
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        starts = [] # Create 2 arrays starts and ends to store the each start and end intervals separately.
+        starts = [] # Define 2 arrays starts and ends to store the each start and end time's separately.
         ends = []
-        rooms, ends_itr = 0,0  # rooms is the variable that would be returned
-        for i in intervals:  # Iterating through the 2D intervals, store all the start intervals into a into starts arrays and ends intervals into ends arrray
+        rooms, ends_idx = 0,0  # rooms is the variable that would be returned
+        for i in intervals:  # Store stars, ends separately
             starts.append(intervals[i][0])
             ends.append(intervals[i][-1])
         starts.sort() #
         ends.sort()
         for i in starts:
-            if starts[i] < ends[ends_itr]:
+            # Start is smaller than end, add one room
+            #if the start interval is less than the end interval increment the room counter since we would need a extra room, else decrement the count since we have freed up the room.
+            if starts[i] < ends[ends_idx]:
                 rooms+=1
-            else:
-                ends_itr+=1
+            else: #  if starts[i] < ends[ends_idx], we cannot use a room we used before, otherwise we can reuse a room.
+                ends_idx+=1
         return rooms
 
 
@@ -35,6 +37,8 @@ https://i.loli.net/2018/09/24/5ba81e7c04aee.jpg
 From this simulation, we can see if starts[i] < ends[endItr], we cannot use a room we used before, otherwise we can reuse a room.
 """
 
+TC: Time Complexity: O(Nlog⁡N)
+SC: O(N)
     def minMeetingRooms(self, intervals):
         # Sort the given meetings by their start time
         intervals.sort(key=lambda x:x[0])
